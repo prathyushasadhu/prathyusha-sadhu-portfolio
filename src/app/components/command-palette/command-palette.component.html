@@ -1,0 +1,66 @@
+@if (isOpen) {
+  <div
+    class="palette-backdrop"
+    (click)="onBackdropClick($event)"
+    role="presentation"
+  >
+    <div
+      class="palette-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Command palette"
+      (keydown)="onKeyDown($event)"
+    >
+      <div class="search-row">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input
+          #searchInput
+          type="text"
+          class="palette-input"
+          placeholder="Search projects, case studies, or pages…"
+          [value]="searchQuery()"
+          (input)="onInput($event)"
+          aria-label="Command palette query"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <kbd class="esc-badge" (click)="dismiss()">ESC</kbd>
+      </div>
+
+      <ul class="palette-list" role="listbox" aria-label="Available commands">
+        @for (cmd of filteredCommands(); track cmd.id; let idx = $index) {
+          <li
+            class="palette-item"
+            [class.selected]="selectedIndex() === idx"
+            (click)="executeCommand(cmd)"
+            (mouseenter)="selectedIndex.set(idx)"
+            role="option"
+            [attr.aria-selected]="selectedIndex() === idx"
+          >
+            <div class="item-left">
+              <span class="item-category">{{ cmd.category }}</span>
+              <span class="item-title">{{ cmd.title }}</span>
+            </div>
+            <div class="item-right">
+              @if (cmd.hint) {
+                <span class="item-hint">{{ cmd.hint }}</span>
+              }
+              <span class="item-enter mono">↵</span>
+            </div>
+          </li>
+        } @empty {
+          <li class="no-results" role="status">
+            No matching sections, projects, or case studies found.
+          </li>
+        }
+      </ul>
+
+      <div class="palette-footer">
+        <span>Use <b>↑</b> <b>↓</b> to navigate</span>
+        <span><b>↵</b> to select</span>
+        <span><b>ESC</b> to dismiss</span>
+      </div>
+    </div>
+  </div>
+}
+

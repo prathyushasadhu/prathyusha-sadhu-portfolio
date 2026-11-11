@@ -1,0 +1,77 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+// Fixed calm nebula backdrop for sections below hero
+.fixed-nebula-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.6;
+
+  picture,
+  .nebula-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .nebula-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 30%, rgba(5, 10, 26, 0.4) 0%, rgba(5, 10, 26, 0.85) 100%);
+  }
+}
+
+main {
+  min-height: calc(100vh - 160px);
+}
+
+footer {
+  padding: 48px 0 100px;
+  color: var(--mu);
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(34, 211, 238, 0.12);
+  background: rgba(5, 10, 26, 0.9);
+  position: relative;
+  z-index: 10;
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    p {
+      margin: 0;
+    }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      color: var(--tx);
+
+      .footer-logo-mark {
+        flex-shrink: 0;
+        filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.5));
+      }
+    }
+
+    .mono-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: rgba(148, 163, 184, 0.7);
+    }
+  }
+}

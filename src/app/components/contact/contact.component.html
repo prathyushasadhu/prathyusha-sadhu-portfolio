@@ -1,0 +1,43 @@
+<section id="contact" class="contact-section" aria-labelledby="contact-title">
+  <div class="contact-card">
+    <div class="contact-header">
+      <div class="mono">Let’s talk</div>
+      <h2 id="contact-title">Open to senior and lead frontend roles and freelance projects.</h2>
+      <p class="contact-desc">
+        Feel free to reach out directly via email or connect on LinkedIn and GitHub.
+      </p>
+
+      <div class="contact-actions">
+        <a [href]="'mailto:' + profile.email" class="btn btn-primary email-btn">
+          Email me →
+        </a>
+        <button
+          type="button"
+          class="btn copy-btn"
+          (click)="copyEmail()"
+          [attr.aria-label]="copied() ? 'Email copied to clipboard' : 'Copy email address'"
+        >
+          {{ copied() ? '✓ Copied to clipboard' : 'Copy email' }}
+        </button>
+      </div>
+    </div>
+
+    <div class="direct-links-card">
+      <div class="direct-links-title mono">Direct Channels</div>
+      <div class="direct-links">
+        <a [href]="'mailto:' + profile.email" class="direct-item">
+          <span class="direct-label">Email:</span>
+          <b>{{ profile.email }}</b>
+        </a>
+        <a [href]="profile.linkedin" target="_blank" rel="noopener" class="direct-item">
+          <span class="direct-label">LinkedIn:</span>
+          <b>linkedin.com/in/prathyusha-sadhu-39144b79</b>
+        </a>
+        <a [href]="profile.github" target="_blank" rel="noopener" class="direct-item">
+          <span class="direct-label">GitHub:</span>
+          <b>github.com/prathyushasadhu</b>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

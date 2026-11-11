@@ -1,0 +1,349 @@
+:host {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.orbit-container {
+  width: 100%;
+  position: relative;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.orbit-stage {
+  width: clamp(520px, 40vw, 760px);
+  aspect-ratio: 1.25 / 1;
+  position: relative;
+  margin: 0 0 0 auto;
+
+  @media (max-width: 1024px) {
+    margin: 0 auto;
+  }
+
+  @media (max-width: 640px) {
+    width: clamp(340px, 92vw, 380px);
+    max-width: 380px;
+    margin: 0 auto;
+  }
+}
+
+.orbit-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.orbit-guide-ellipse {
+  fill: none;
+  stroke: rgba(120, 190, 255, 0.35);
+  stroke-width: 1.25px;
+  stroke-dasharray: 6 5;
+  filter: drop-shadow(0 0 5px rgba(120, 190, 255, 0.28));
+  transition: stroke 0.25s ease, stroke-width 0.25s ease, filter 0.25s ease;
+
+  &.bright-ellipse {
+    stroke: rgba(34, 211, 238, 0.9) !important;
+    stroke-width: 2px !important;
+    filter: drop-shadow(0 0 12px rgba(34, 211, 238, 0.65)) !important;
+  }
+}
+
+.particle-dot {
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.central-orbit-core {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  pointer-events: auto;
+
+  .core-sphere {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 28px rgba(34, 211, 238, 0.65), 0 0 50px rgba(59, 130, 246, 0.4);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+  }
+
+  &:hover .core-sphere,
+  &:focus-visible .core-sphere {
+    transform: scale(1.06);
+    box-shadow: 0 0 38px rgba(34, 211, 238, 0.95), 0 0 65px rgba(59, 130, 246, 0.6);
+  }
+
+  .core-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .core-brand-text {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    fill: #F1F5F9;
+    pointer-events: none;
+  }
+
+  .core-halo-pulse {
+    position: absolute;
+    inset: -14px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.35) 0%, rgba(34, 211, 238, 0) 70%);
+    pointer-events: none;
+    animation: haloPulse 4s ease-in-out infinite;
+  }
+}
+
+@keyframes haloPulse {
+  0%, 100% {
+    transform: scale(0.92);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.22);
+    opacity: 0.42;
+  }
+}
+
+.planets-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+// Outer layer: ONLY receives JS-driven translate3d(x, y, 0).
+// Never apply transform scales or transitions here.
+.planet {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  margin-left: -24px;
+  margin-top: -24px;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.planet-link {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+}
+
+// Inner layer: Receives hover/focus scale(1.15) with smooth transition
+.planet-body {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+  will-change: transform;
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.planet-link:hover .planet-body,
+.planet-link:focus .planet-body,
+.planet-link:focus-visible .planet-body {
+  transform: scale(1.15);
+}
+
+.planet-ring {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease;
+
+  &.dashed-ring {
+    border: 1.5px dashed var(--p-accent);
+  }
+
+  &.solid-ring {
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+  }
+}
+
+// Sizing: 48px (in required 46–52px range)
+.planet-sphere {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, var(--p-accent) 38%, #050a1a 92%);
+  box-shadow: 0 0 14px var(--p-accent), 0 0 3px rgba(255, 255, 255, 0.5) inset;
+  transition: box-shadow 0.25s ease;
+
+  .planet-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.8));
+    pointer-events: none;
+  }
+
+  .specular-glint {
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    width: 8px;
+    height: 5px;
+    border-radius: 50%;
+    background: #ffffff;
+    opacity: 0.55;
+    transform: rotate(-25deg);
+    pointer-events: none;
+  }
+}
+
+.planet-link:hover .planet-sphere,
+.planet-link:focus-visible .planet-sphere {
+  box-shadow: 0 0 24px var(--p-accent), 0 0 6px rgba(255, 255, 255, 0.8) inset;
+}
+
+// Permanent label under planet: short name ONLY
+.planet-label {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  margin: 0;
+  background: rgba(5, 10, 26, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  border-radius: 6px;
+  padding: 2px 7px;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  opacity: 1;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+
+  &.label-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .label-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: #F1F5F9;
+    letter-spacing: -0.01em;
+  }
+}
+
+.planet-link:hover .planet-label,
+.planet-link:focus-visible .planet-label {
+  border-color: var(--p-accent);
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.35);
+
+  .label-name {
+    color: var(--p-accent);
+  }
+}
+
+// Hover Tooltip: Tag/Type ONLY here
+.planet-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+  background: rgba(10, 16, 48, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--p-accent, #22D3EE);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 16px rgba(34, 211, 238, 0.3);
+  border-radius: 8px;
+  padding: 6px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 60;
+  animation: tooltipFade 0.2s ease-out;
+
+  .tooltip-name {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #F1F5F9;
+  }
+
+  .tooltip-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--p-accent, #22D3EE);
+  }
+}
+
+@keyframes tooltipFade {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 4px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (max-width: 640px) {
+  .orbit-container {
+    max-width: 380px;
+  }
+
+  .planet-label {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .core-halo-pulse {
+    animation: none !important;
+  }
+  .planet-body {
+    transition: none !important;
+  }
+}

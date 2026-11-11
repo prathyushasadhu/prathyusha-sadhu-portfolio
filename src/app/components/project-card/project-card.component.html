@@ -1,0 +1,61 @@
+<article
+  [id]="card.id"
+  class="card card-glare"
+  [class.ind]="card.kind === 'ind'"
+  [style.--a]="card.accent"
+  (mousemove)="onMouseMove($event)"
+  (mouseleave)="onMouseLeave()"
+>
+  <div class="card-badge-row">
+    <span class="kind">
+      {{ card.kind === 'pro' ? 'Professional' : 'Independent' }} · {{ card.subtitle }}
+    </span>
+  </div>
+
+  <h3 class="card-title">{{ card.title }}</h3>
+  <p class="card-desc">{{ card.description }}</p>
+
+  <!-- Interactive Data Flow Chips (e.g. q-live) -->
+  @if (card.flow && card.flow.length) {
+    <div class="flow" aria-label="Architecture data flow">
+      @for (node of card.flow; track node; let isLast = $last) {
+        <em>{{ node }}</em>
+        @if (!isLast) {
+          <span class="flow-arrow" aria-hidden="true">→</span>
+        }
+      }
+    </div>
+  }
+
+  <!-- Metrics row -->
+  @if (card.metrics && card.metrics.length) {
+    <div class="met" aria-label="Project metrics">
+      @for (metric of card.metrics; track metric) {
+        <span>{{ metric }}</span>
+      }
+    </div>
+  }
+
+  <!-- Tech tags -->
+  <div class="tags" aria-label="Technologies used">
+    @for (tag of card.tech; track tag) {
+      <span class="tag">{{ tag }}</span>
+    }
+  </div>
+
+  <!-- Links footer -->
+  <div class="card-actions">
+    @if (card.caseStudySlug) {
+      <a [routerLink]="['/case-studies', card.caseStudySlug]" class="cs-link">
+        Explore Case Study →
+      </a>
+    }
+
+    @if (card.githubUrl) {
+      <a [href]="card.githubUrl" target="_blank" rel="noopener" class="repo-link">
+        View on GitHub ↗
+      </a>
+    }
+  </div>
+</article>
+

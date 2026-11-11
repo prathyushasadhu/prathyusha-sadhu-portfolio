@@ -1,0 +1,30 @@
+<section id="about" class="about-section" aria-labelledby="about-title">
+  <div class="section-head">
+    <div class="mono">About</div>
+    <h2 id="about-title">
+      <span class="heading-mask"><span class="masked-heading-text">Enterprise craft, with an AI curiosity</span></span>
+    </h2>
+    <p class="about-lead">
+      {{ profile.summary }}
+    </p>
+  </div>
+
+
+  <!-- Technical Skills Matrix -->
+  <div class="skills-block">
+    <h3 class="skills-head">Technical Capabilities & Tooling</h3>
+    <div class="skills-grid">
+      @for (cat of skillCategories; track cat.category) {
+        <div class="skill-category-card">
+          <h4>{{ cat.category }}</h4>
+          <div class="skill-chips">
+            @for (item of cat.items; track item) {
+              <span class="skill-pill">{{ item }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,135 @@
+<section id="resume" class="timeline-section" aria-labelledby="resume-title">
+  <div class="section-head">
+    <div class="mono">Career Journey</div>
+    <h2 id="resume-title">
+      <span class="heading-mask"><span class="masked-heading-text">Nine years, two companies, two countries</span></span>
+    </h2>
+    <p>
+      A chronological record of technical delivery across enterprise platforms, international frontend leadership in Canada, and hands-on AI product engineering.
+    </p>
+  </div>
+
+  <div class="journey-wrapper" #journeyContainer>
+    <!-- Vertical Scroll Progress Rail & Mini-Me Marker -->
+    <div class="journey-rail-track" aria-hidden="true">
+      <div class="rail-line-bg"></div>
+      <div class="rail-line-fill" #railFill></div>
+      <div class="rail-mini-me-marker" #miniMeMarker title="Scroll progress indicator">
+        <svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true" class="mini-me-svg">
+          @for (cell of pixelGrid; track cell.x + '-' + cell.y) {
+            <rect
+              [attr.x]="cell.x"
+              [attr.y]="cell.y"
+              width="1"
+              height="1"
+              [attr.fill]="cell.fill"
+            />
+          }
+        </svg>
+      </div>
+    </div>
+
+    <!-- Milestones Column -->
+    <div class="milestones-stream">
+      @for (m of milestones; track m.id) {
+        <article
+          class="milestone-card"
+          [id]="'milestone-' + m.id"
+          [style.--milestone-accent]="m.accentColor"
+        >
+          <!-- Anchor node dot attached to the rail line -->
+          <div class="milestone-node-dot" aria-hidden="true"></div>
+
+          <!-- Card Header & Metadata -->
+          <header class="milestone-header">
+            <div class="milestone-meta-bar">
+              <span class="milestone-period">{{ m.period }}</span>
+              <span class="milestone-badge">{{ m.employer }}</span>
+            </div>
+
+            <h3 class="milestone-role">{{ m.role }}</h3>
+            <div class="milestone-client-line">{{ m.clientLine }}</div>
+
+            <!-- Infosys Route Chip with traveling dot -->
+            @if (m.routeChip) {
+              <div class="route-chip-container" aria-label="International relocation route">
+                <div class="route-chip">
+                  <span class="route-city">{{ m.routeChip.from }}</span>
+                  <svg class="route-line-svg" viewBox="0 0 48 10" aria-hidden="true">
+                    <line x1="2" y1="5" x2="46" y2="5" stroke="rgba(115, 182, 255, 0.45)" stroke-width="2" stroke-dasharray="3 3" />
+                    <circle class="travelling-dot" cx="2" cy="5" r="3" fill="#73B6FF">
+                      <animate attributeName="cx" from="2" to="46" dur="2.4s" repeatCount="indefinite" />
+                    </circle>
+                  </svg>
+                  <span class="route-city route-dest">{{ m.routeChip.to }}</span>
+                </div>
+                <div class="route-period-breakdown">{{ m.routeChip.periodDetails }}</div>
+              </div>
+            }
+
+            <!-- Mindtree 4 Client Engagements Breakdown -->
+            @if (m.clients && m.clients.length) {
+              <div class="client-engagements-grid" aria-label="Client engagements">
+                <div class="engagements-title">Client Engagements:</div>
+                <div class="engagements-list">
+                  @for (c of m.clients; track c.descriptor) {
+                    <div class="engagement-pill">
+                      <span class="client-desc">{{ c.descriptor }}</span>
+                      <span class="client-period">{{ c.period }}</span>
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+          </header>
+
+          <!-- Verified Highlights Grid -->
+          <div class="highlights-grid" aria-label="Key verified numbers">
+            @for (hl of m.highlights; track hl.label) {
+              <div class="highlight-item">
+                <b class="hl-value">{{ hl.value }}</b>
+                <span class="hl-label">{{ hl.label }}</span>
+              </div>
+            }
+          </div>
+
+          <!-- "What I did" Disclosure (<details>) -->
+          <details class="what-i-did-disclosure" [attr.open]="m.isOpenByDefault ? '' : null">
+            <summary class="disclosure-summary">
+              <span class="summary-label">What I did</span>
+              <span class="disclosure-counter">({{ m.responsibilities.length }} key areas)</span>
+              <span class="disclosure-arrow" aria-hidden="true">▾</span>
+            </summary>
+            <ul class="responsibilities-list">
+              @for (resp of m.responsibilities; track resp) {
+                <li>{{ resp }}</li>
+              }
+            </ul>
+          </details>
+
+          <!-- Technology Chips -->
+          <footer class="milestone-footer">
+            <div class="tech-chips-row" aria-label="Technologies used">
+              @for (t of m.tech; track t) {
+                <span class="tech-tag">{{ t }}</span>
+              }
+            </div>
+          </footer>
+        </article>
+      }
+    </div>
+  </div>
+
+  <!-- Download Resume CTA -->
+  <div class="resume-cta">
+    <a
+      class="btn btn-primary"
+      [href]="profile.resumePdf"
+      download="Prathyusha_Sadhu_Resume.pdf"
+      target="_blank"
+      rel="noopener"
+    >
+      Download Resume (PDF)
+    </a>
+  </div>
+</section>

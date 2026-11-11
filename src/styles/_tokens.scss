@@ -1,0 +1,63 @@
+// Design tokens: dark futuristic cosmic space system
+:root {
+  --bg: #050A1A;
+  --bg-deep: #030611;
+  --surface: #0A1030;
+  --elevated: #111A3E;
+  --cyan: #22D3EE;
+  --violet: #8B5CF6;
+  --blue: #3B82F6;
+  --green: #34D399;
+  --orange: #FB923C;
+  --pink: #F472B6;
+  --amber: #F59E0B;
+
+  --eng: #22D3EE;
+  --ai: #8B5CF6;
+  --product: #34D399;
+  --creative: #FB923C;
+
+  --text: #F1F5F9;
+  --muted: #94A3B8;
+  --border: rgba(34, 211, 238, 0.16);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 22px;
+  --font-head: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+  --space-7: 6rem;
+  --shadow-1: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-2: 0 1px 0 rgba(255, 255, 255, 0.08) inset, 0 20px 50px rgba(0, 0, 0, 0.6);
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --dur: 220ms;
+}
+
+// Type scale
+$h1: clamp(2.6rem, 6vw, 5rem);
+$h2: clamp(1.8rem, 3.4vw, 2.6rem);
+$h3: 1.25rem;
+$body: 1rem;
+$label: .75rem;
+
+// Breakpoints: mobile 360–767, tablet 768–1023, desktop 1024–1439, large 1440+
+$bp-tablet: 768px;
+$bp-desktop: 1024px;
+$bp-large: 1440px;
+
+// Reduced motion override
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

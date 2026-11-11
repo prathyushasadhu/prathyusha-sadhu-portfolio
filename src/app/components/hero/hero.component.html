@@ -1,0 +1,282 @@
+<section class="hero-section" id="home" aria-label="Hero Introduction">
+  <!-- Full-bleed Cosmic Space Background Layer -->
+  <div class="hero-bg-layer" aria-hidden="true">
+    <picture>
+      <source media="(max-width: 640px)" srcset="/assets/hero/space-bg-mobile.webp" />
+      <source media="(max-width: 800px)" srcset="/assets/hero/space-bg-800.webp" />
+      <source media="(max-width: 1280px)" srcset="/assets/hero/space-bg-1280.webp" />
+      <img
+        src="/assets/hero/space-bg-1672.webp"
+        alt=""
+        class="hero-space-img"
+        width="1672"
+        height="940"
+        fetchpriority="high"
+        loading="eager"
+        decoding="async"
+      />
+    </picture>
+    <div class="hero-gradient-overlay"></div>
+    <div class="hero-star-field"></div>
+  </div>
+
+  <div class="wrap hero-wrap">
+    <div class="hero-grid">
+      <!-- Left Column: Introduction & Call-To-Actions (~52% wide) -->
+      <div class="hero-text-col">
+        <div class="hero-eyebrow">HELLO, I'M PRATHYUSHA</div>
+
+        <h1 class="hero-title">
+          <span class="mask-line">
+            <span class="masked-word word-1">Engineering</span>
+            <span class="masked-word word-2">experiences.</span>
+          </span>
+          <span class="mask-line">
+            <span class="masked-word word-3">Building</span>
+            <span class="masked-word word-4 gradient-intelligent">intelligent</span>
+            <span class="masked-word word-5">systems.</span>
+          </span>
+        </h1>
+
+        <p class="hero-lead">
+          Frontend-focused software engineer with 9+ years of experience crafting scalable solutions, exploring AI and building products.
+        </p>
+
+        <!-- CTA Row: Visible on desktop (hidden on mobile where CTAs appear in the bottom block) -->
+        <div class="hero-cta-row">
+          <a class="btn btn-solid-cyan" href="#project-orbit">
+            Explore My Work →
+          </a>
+          <a
+            class="btn btn-outline-cyan"
+            href="/assets/Prathyusha_Sadhu_Resume.pdf"
+            download="Prathyusha_Sadhu_Resume.pdf"
+            target="_blank"
+            rel="noopener"
+          >
+            Download Resume
+          </a>
+        </div>
+
+        <!-- Tech Chips Row: Directly under CTAs, horizontally scrollable on mobile -->
+        <div class="hero-chips" aria-label="Core technologies" role="list">
+          <span class="tech-chip chip-angular" role="listitem">
+            <span class="chip-badge-ng" aria-hidden="true">A</span>
+            Angular
+          </span>
+          <span class="tech-chip chip-ts" role="listitem">
+            <span class="chip-badge-ts" aria-hidden="true">TS</span>
+            TypeScript
+          </span>
+          <span class="tech-chip chip-ai" role="listitem">
+            <svg class="chip-svg-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.5V11a2 2 0 0 0 2 2h1.5a4 4 0 1 1 0 8H16a2 2 0 0 0-2 2v.5a4 4 0 1 1-8 0V23a2 2 0 0 0-2-2H2.5a4 4 0 1 1 0-8H4a2 2 0 0 0 2-2V9.5C4.8 8.8 4 7.5 4 6a4 4 0 0 1 4-4"/>
+            </svg>
+            AI Systems
+          </span>
+          <span class="tech-chip chip-cloud" role="listitem">
+            <svg class="chip-svg-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
+            </svg>
+            Cloud
+          </span>
+        </div>
+
+        <!-- Verified Stat Row (dark backing keeps it readable over the moon; hidden on mobile) -->
+        <div class="hero-stats-row" aria-label="Experience Highlights">
+          <div class="stat-card">
+            <span class="stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </span>
+            <span class="stat-label">9+ Years Experience</span>
+          </div>
+
+          <div class="stat-divider" aria-hidden="true"></div>
+
+          <div class="stat-card">
+            <span class="stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </span>
+            <span class="stat-label">Enterprise Frontend Engineering</span>
+          </div>
+
+          <div class="stat-divider" aria-hidden="true"></div>
+
+          <div class="stat-card">
+            <span class="stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </span>
+            <span class="stat-label">AI-Powered Innovations</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Orbit stage & hint line -->
+      <div class="hero-orbit-col">
+        <div class="orbit-stage-row">
+          <app-project-orbit></app-project-orbit>
+        </div>
+        <div class="orbit-hint-line" aria-hidden="true">
+          <span class="hint-line-bar left-bar"></span>
+          <span class="hint-text">Tap a planet to explore my projects</span>
+          <span class="hint-line-bar right-bar"></span>
+        </div>
+        <div class="character-bottom-band" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <!-- Mobile Bottom Block (matching design image: Let's build something intelligent + 2 CTAs on left, Character on right) -->
+    <div class="mobile-bottom-block">
+      <div class="mobile-build-col">
+        <h2 class="mobile-build-title">
+          Let’s build<br />something intelligent.
+        </h2>
+        <p class="mobile-build-sub">
+          Explore my work and<br />engineering journey.
+        </p>
+        <div class="mobile-build-ctas">
+          <a class="btn btn-solid-cyan mobile-btn-work" href="#project-orbit">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+              <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+              <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+              <path d="M12 9V4s3.03.55 4 2c1.08 1.62 0 5 0 5"/>
+            </svg>
+            <span>Explore My Work</span>
+            <span class="btn-arrow" aria-hidden="true">→</span>
+          </a>
+          <a
+            class="btn btn-outline-cyan mobile-btn-resume"
+            href="/assets/Prathyusha_Sadhu_Resume.pdf"
+            download="Prathyusha_Sadhu_Resume.pdf"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg class="btn-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span>Resume</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="mobile-char-col" (click)="openAssistantDialog()" role="button" tabindex="0" aria-label="Open Orbi assistant">
+        <picture>
+          <source media="(max-width: 640px)" srcset="/assets/hero/hero-character-480.webp" />
+          <img
+            src="/assets/hero/hero-character-720.webp"
+            alt="Prathyusha Sadhu 3D character sitting on earth horizon"
+            class="mobile-character-img"
+            loading="eager"
+            decoding="async"
+          />
+        </picture>
+      </div>
+    </div>
+
+    <!-- Scroll To Explore Cue with Mouse Icon and Animated Chevron -->
+    <a href="#project-orbit" class="scroll-cue" aria-label="Scroll to explore projects">
+      <svg class="scroll-mouse" viewBox="0 0 24 24" width="16" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="5" y="2" width="14" height="20" rx="7"/>
+        <line x1="12" y1="6" x2="12" y2="10"/>
+      </svg>
+      <span class="scroll-label">Scroll to explore</span>
+      <svg class="scroll-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Character Far Right: position: absolute; right: clamp(0px, 1.5vw, 32px); bottom: 0; -->
+  <!-- Acts as the Assistant Launcher at top of page (scrollY < 60% hero height) -->
+  <div
+    class="hero-character-launcher"
+    [class.launcher-hidden]="isScrolledPastHero()"
+    role="button"
+    tabindex="0"
+    aria-label="Open Orbi assistant"
+    (click)="onCharacterClick($event)"
+    (keydown.enter)="openAssistantDialog()"
+    #heroLauncherRef
+  >
+    <!-- Compact Greeting Bubble to the left of her head in bottom band -->
+    <div
+      class="compact-greeting"
+      [class.bubble-visible]="greetingVisible()"
+      [class.is-collapsed]="bubbleCollapsed()"
+      (click)="$event.stopPropagation()"
+    >
+      @if (!bubbleCollapsed()) {
+        <div class="bubble-full-box">
+          <div class="bubble-header-row">
+            <span class="bubble-text">Hi! 👋 I'm <strong>Orbi</strong></span>
+            <button
+              type="button"
+              class="bubble-close-btn"
+              (click)="collapseBubble($event)"
+              aria-label="Minimize greeting"
+            >✕</button>
+          </div>
+          <!-- 3 chips on desktop, 1 "Ask Me Anything" chip on mobile -->
+          <div class="bubble-chips-row">
+            <a href="#project-orbit" class="speech-chip chip-desktop-only">Explore Projects</a>
+            <a href="#journey" class="speech-chip chip-desktop-only">View Experience</a>
+            <button type="button" class="speech-chip chip-btn chip-ask-anything" (click)="openAssistantDialog()">
+              Ask Me Anything
+            </button>
+          </div>
+          <div class="bubble-pointer" aria-hidden="true"></div>
+        </div>
+      } @else {
+        <button
+          type="button"
+          class="bubble-collapsed-chip"
+          (click)="expandBubble($event)"
+          aria-label="Expand Orbi greeting"
+        >
+          <span class="mini-pulse-dot" aria-hidden="true"></span>
+          <span>Hi! 👋</span>
+        </button>
+      }
+    </div>
+
+    <!-- Glowing Cyan Ring Platform -->
+    <div class="platform-rings" aria-hidden="true">
+      <svg viewBox="0 0 240 70" width="240" height="70" class="platform-svg">
+        <defs>
+          <radialGradient id="plat-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.85" />
+            <stop offset="50%" stop-color="#3B82F6" stop-opacity="0.3" />
+            <stop offset="100%" stop-color="#050A1A" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        <ellipse cx="120" cy="35" rx="100" ry="24" fill="url(#plat-glow)" />
+        <ellipse cx="120" cy="35" rx="90" ry="20" fill="none" stroke="#22D3EE" stroke-width="2" opacity="0.8" />
+        <ellipse cx="120" cy="35" rx="68" ry="14" fill="none" stroke="#38BDF8" stroke-width="1.2" opacity="0.6" stroke-dasharray="6 4" />
+      </svg>
+    </div>
+
+    <!-- Character Image (Gentle float) -->
+    <div class="character-float">
+      <picture>
+        <source media="(max-width: 640px)" srcset="/assets/hero/hero-character-480.webp" />
+        <source media="(max-width: 1024px)" srcset="/assets/hero/hero-character-720.webp" />
+        <img
+          src="/assets/hero/hero-character-960.webp"
+          alt="Orbi, 3D character illustration of Prathyusha Sadhu sitting cross-legged in a blue hoodie with a glowing cyan orbit logo"
+          class="character-img"
+          loading="eager"
+          decoding="async"
+        />
+      </picture>
+    </div>
+  </div>
+</section>

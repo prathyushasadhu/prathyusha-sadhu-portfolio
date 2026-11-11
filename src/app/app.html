@@ -1,0 +1,59 @@
+<!-- Fixed Calm Nebula Backdrop for sections below hero -->
+<div class="fixed-nebula-bg" aria-hidden="true">
+  <picture>
+    <source media="(max-width: 800px)" srcset="/assets/hero/nebula-calm-800.webp" />
+    <img
+      src="/assets/hero/nebula-calm-1024.webp"
+      alt=""
+      class="nebula-img"
+      loading="lazy"
+      decoding="async"
+      fetchpriority="low"
+      width="1024"
+      height="600"
+    />
+  </picture>
+  <div class="nebula-overlay"></div>
+</div>
+
+<!-- Skip link for keyboard accessibility -->
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- Primary Header Navigation -->
+<app-nav (openCommandPalette)="paletteService.open()"></app-nav>
+
+<!-- Main landmark -->
+<main id="main">
+  <router-outlet></router-outlet>
+</main>
+
+<!-- Command Palette Modal -->
+<app-command-palette
+  [isOpen]="paletteService.isOpen()"
+  (close)="paletteService.close()"
+></app-command-palette>
+
+<!-- Orbi AI Assistant (Bottom-Right Floating Trigger & Chat Dialog) -->
+<app-mini-me></app-mini-me>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap footer-content">
+    <div class="footer-brand">
+      <svg class="footer-logo-mark" viewBox="0 0 64 64" width="24" height="24" aria-hidden="true">
+        <defs>
+          <linearGradient id="footer-logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#22D3EE" />
+            <stop offset="100%" stop-color="#3B82F6" />
+          </linearGradient>
+        </defs>
+        <ellipse cx="32" cy="32" rx="26" ry="8.5" transform="rotate(-26 32 32)" fill="none" stroke="url(#footer-logo-grad)" stroke-width="2.5" opacity="0.65" />
+        <circle cx="32" cy="32" r="14" fill="#22D3EE" />
+        <circle cx="51.5" cy="22.5" r="2.2" fill="#E0F2FE" />
+      </svg>
+      <span class="logo-name">PS</span>
+    </div>
+    <p>© Prathyusha Sadhu · Hyderabad, India</p>
+    <p class="mono-meta">Built with Angular · Standalone · Enterprise Architecture</p>
+  </div>
+</footer>

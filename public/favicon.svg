@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="orbit-cyan-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22D3EE" />
+      <stop offset="60%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+    <radialGradient id="sphere-gradient" cx="35%" cy="32%" r="68%">
+      <stop offset="0%" stop-color="#A5F3FC" />
+      <stop offset="35%" stop-color="#22D3EE" />
+      <stop offset="75%" stop-color="#1E40AF" />
+      <stop offset="100%" stop-color="#050A1A" />
+    </radialGradient>
+    <filter id="cyan-glow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Ambient soft glow behind planet -->
+  <circle cx="32" cy="32" r="22" fill="#22D3EE" opacity="0.18" filter="url(#cyan-glow)" />
+
+  <!-- Back arc of tilted ring -->
+  <ellipse cx="32" cy="32" rx="26" ry="8.5" transform="rotate(-26 32 32)" fill="none" stroke="url(#orbit-cyan-blue)" stroke-width="2.5" stroke-dasharray="40 50" stroke-dashoffset="20" opacity="0.75" />
+
+  <!-- Planet sphere -->
+  <circle cx="32" cy="32" r="14.5" fill="url(#sphere-gradient)" />
+
+  <!-- Specular glint -->
+  <ellipse cx="27" cy="26" rx="4.5" ry="2.5" fill="#FFFFFF" opacity="0.45" transform="rotate(-26 27 26)" />
+
+  <!-- Front arc of tilted ring swoosh with bright glow -->
+  <ellipse cx="32" cy="32" rx="26" ry="8.5" transform="rotate(-26 32 32)" fill="none" stroke="url(#orbit-cyan-blue)" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="46 50" stroke-dashoffset="-7" filter="url(#cyan-glow)" />
+
+  <!-- Orbiting accent particle -->
+  <circle cx="51.5" cy="22.5" r="2.2" fill="#E0F2FE" filter="url(#cyan-glow)" />
+</svg>

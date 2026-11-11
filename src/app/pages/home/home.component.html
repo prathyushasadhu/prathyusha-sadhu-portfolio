@@ -1,0 +1,156 @@
+<div class="home-page">
+  <!-- Interactive Soft Spotlight Overlay -->
+  <div class="spotlight-overlay" aria-hidden="true"></div>
+
+  <!-- 1. Hero with Project Orbit & Orbi Character -->
+  <app-hero></app-hero>
+
+  <div class="wrap">
+    <!-- 2. Project Orbit Studio Section with Filter Tabs -->
+    <section id="project-orbit" class="studio-section" aria-labelledby="orbit-title">
+      <div class="section-head">
+        <div class="mono">Project Orbit</div>
+        <h2 id="orbit-title">
+          <span class="heading-mask"><span class="masked-heading-text">Enterprise engineering and intelligent systems</span></span>
+        </h2>
+        <p>
+          Working products, platforms and architectural explorations across engineering, generative AI and product tooling.
+        </p>
+
+        <!-- Discipline Filter Tabs -->
+        <div class="filter-tabs" role="tablist" aria-label="Filter projects by discipline">
+          <button
+            type="button"
+            class="filter-tab"
+            [class.active]="selectedFilter() === 'all'"
+            (click)="setFilter('all')"
+            role="tab"
+            [attr.aria-selected]="selectedFilter() === 'all'"
+          >
+            All Projects ({{ allCards.length }})
+          </button>
+          <button
+            type="button"
+            class="filter-tab"
+            [class.active]="selectedFilter() === 'engineering'"
+            (click)="setFilter('engineering')"
+            role="tab"
+            [attr.aria-selected]="selectedFilter() === 'engineering'"
+          >
+            Engineering Lab
+          </button>
+          <button
+            type="button"
+            class="filter-tab"
+            [class.active]="selectedFilter() === 'ai'"
+            (click)="setFilter('ai')"
+            role="tab"
+            [attr.aria-selected]="selectedFilter() === 'ai'"
+          >
+            AI Lab
+          </button>
+          <button
+            type="button"
+            class="filter-tab"
+            [class.active]="selectedFilter() === 'product'"
+            (click)="setFilter('product')"
+            role="tab"
+            [attr.aria-selected]="selectedFilter() === 'product'"
+          >
+            Product Studio
+          </button>
+        </div>
+      </div>
+
+      <div class="project-grid">
+        @for (card of filteredCards(); track card.id) {
+          <app-project-card [card]="card"></app-project-card>
+        }
+      </div>
+    </section>
+
+    <!-- 3. My Journey: Career Timeline with Route Chip and Count-ups -->
+    <section id="journey" class="timeline-section" aria-labelledby="journey-title">
+      <div class="section-head">
+        <div class="mono">My Journey</div>
+        <h2 id="journey-title">
+          <span class="heading-mask"><span class="masked-heading-text">Nine years, two companies, two countries</span></span>
+        </h2>
+        <p>
+          A chronological record of technical delivery across enterprise platforms, international frontend leadership in Canada, and hands-on AI product engineering.
+        </p>
+      </div>
+
+      <!-- Career Journey Component with 4 Milestones -->
+      <app-career-journey></app-career-journey>
+
+      <div class="resume-cta">
+        <a
+          class="btn btn-primary"
+          href="/assets/Prathyusha_Sadhu_Resume.pdf"
+          download="Prathyusha_Sadhu_Resume.pdf"
+          target="_blank"
+          rel="noopener"
+        >
+          Download Resume (PDF)
+        </a>
+      </div>
+    </section>
+
+    <!-- 4. AI Lab Studio & Interactive Architecture Explorer -->
+    <section id="ai-lab" class="studio-section" aria-labelledby="ai-lab-title">
+      <div class="section-head">
+        <div class="mono" style="color: var(--ai)">AI Lab</div>
+        <h2 id="ai-lab-title">
+          <span class="heading-mask"><span class="masked-heading-text">Voice agents, LLM integrations and agentic workflows</span></span>
+        </h2>
+        <p>
+          Independent personal projects exploring multi-tenant voice telephony, real-time conversational agents, and dynamic LLM orchestration.
+        </p>
+      </div>
+
+      <!-- Interactive Architecture Explorer for q-live -->
+      <app-arch-explorer [nodes]="qLiveNodes"></app-arch-explorer>
+
+      <!-- Assistant Consultation Cue -->
+      <div class="ai-assistant-banner">
+        <div class="banner-text">
+          <b>Want to explore the q-live architecture in depth?</b>
+          <span>Ask Orbi about tenancy isolation, Sarvam AI speech integration, or latency trade-offs.</span>
+        </div>
+        <button type="button" class="btn btn-outline-cyan" (click)="openAssistant()">
+          Ask Orbi About q-live →
+        </button>
+      </div>
+    </section>
+
+    <!-- 5. Technical Skills Matrix -->
+    <section id="skills" class="skills-section" aria-labelledby="skills-title">
+      <div class="section-head">
+        <div class="mono">Technical Capabilities</div>
+        <h2 id="skills-title">
+          <span class="heading-mask"><span class="masked-heading-text">Skills, frameworks and toolchains</span></span>
+        </h2>
+        <p>
+          Enterprise frontend architecture, reactive state management, modern cloud tooling and applied generative AI.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+        @for (cat of skillCategories; track cat.category) {
+          <div class="skill-category-card">
+            <h3 class="skill-cat-title">{{ cat.category }}</h3>
+            <div class="skill-chips">
+              @for (item of cat.items; track item) {
+                <span class="skill-pill">{{ item }}</span>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+
+    <!-- 6. Contact Section -->
+    <app-contact></app-contact>
+  </div>
+</div>

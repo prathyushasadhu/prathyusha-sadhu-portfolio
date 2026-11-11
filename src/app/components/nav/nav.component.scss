@@ -1,0 +1,199 @@
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(5, 10, 26, 0.84);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(34, 211, 238, 0.14);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--tx);
+  text-decoration: none;
+  outline: none;
+
+  .logo-mark {
+    flex: none;
+    filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.5));
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  &:hover .logo-mark,
+  &:focus-visible .logo-mark {
+    transform: rotate(15deg) scale(1.08);
+  }
+
+  .logo-name {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #F1F5F9;
+
+    &.logo-mobile {
+      display: none;
+      letter-spacing: 0.08em;
+    }
+
+    &.logo-desktop {
+      display: inline;
+    }
+  }
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: #94A3B8;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  min-height: 36px;
+
+  .nav-icon {
+    display: none;
+    align-items: center;
+  }
+
+  &:hover {
+    color: #F1F5F9;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  &.active-pill {
+    background: rgba(34, 211, 238, 0.14);
+    border-color: rgba(34, 211, 238, 0.45);
+    color: #22D3EE;
+    font-weight: 600;
+    box-shadow: 0 0 14px rgba(34, 211, 238, 0.22);
+
+    .nav-icon {
+      display: inline-flex;
+      color: #22D3EE;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.kbd-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94A3B8;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover,
+  &:focus-visible {
+    color: #22D3EE;
+    border-color: rgba(34, 211, 238, 0.4);
+    background: rgba(34, 211, 238, 0.08);
+  }
+}
+
+.burger-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: #F1F5F9;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 8px;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+@media (max-width: 900px) {
+  .burger-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .links {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: rgba(5, 10, 26, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(34, 211, 238, 0.16);
+    flex-direction: column;
+    padding: 16px 22px 24px;
+    gap: 8px;
+
+    &.open {
+      display: flex;
+    }
+
+    .nav-link {
+      width: 100%;
+      padding: 10px 16px;
+      font-size: 0.95rem;
+      min-height: 44px;
+
+      .nav-icon {
+        display: inline-flex;
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .logo .logo-name.logo-desktop {
+    display: none;
+  }
+  .logo .logo-name.logo-mobile {
+    display: inline;
+  }
+
+  .kbd-btn {
+    display: none;
+  }
+
+  .burger-btn {
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 9999px;
+    padding: 6px 12px;
+    min-width: 46px;
+    height: 38px;
+    min-height: 38px;
+  }
+}

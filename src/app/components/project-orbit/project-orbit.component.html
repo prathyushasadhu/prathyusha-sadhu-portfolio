@@ -1,0 +1,223 @@
+<div class="orbit-container">
+  <div class="orbit-stage" #stageRef>
+    <!-- SVG Rings & Cosmic Backdrop: Dynamically sized via ResizeObserver -->
+    <svg
+      id="orbit-svg"
+      [attr.viewBox]="'0 0 ' + stageWidth + ' ' + stageHeight"
+      class="orbit-svg"
+      role="group"
+      aria-label="Interactive Project Orbit: 10 projects in three concentric elliptical orbits"
+    >
+      <defs>
+        <!-- Radial dark overlay behind orbit to maintain legibility -->
+        <radialGradient id="orbit-dark-overlay" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#050A1A" stop-opacity="0.82" />
+          <stop offset="55%" stop-color="#050A1A" stop-opacity="0.45" />
+          <stop offset="100%" stop-color="#050A1A" stop-opacity="0" />
+        </radialGradient>
+
+        <!-- Central Core Gradient -->
+        <radialGradient id="core-sun-glow" cx="38%" cy="35%" r="65%">
+          <stop offset="0%" stop-color="#E0F2FE" />
+          <stop offset="35%" stop-color="#22D3EE" />
+          <stop offset="75%" stop-color="#1D4ED8" />
+          <stop offset="100%" stop-color="#050A1A" />
+        </radialGradient>
+
+        <linearGradient id="core-logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#22D3EE" />
+          <stop offset="100%" stop-color="#3B82F6" />
+        </linearGradient>
+
+        <filter id="core-glow-filter" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="6" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+      </defs>
+
+      <!-- Radial dark backing ellipse behind orbits to maintain crisp contrast over galaxy spiral -->
+      <ellipse
+        fill="url(#orbit-dark-overlay)"
+        cx="307"
+        cy="146"
+        rx="426.42"
+        ry="148.6"
+        transform="rotate(-12 307 246)"
+      />
+
+      <!-- Three Tilted Concentric Elliptical Rings (same geometry as planets) -->
+      @for (ring of rings; track ring.index) {
+        <ellipse
+          [attr.cx]="cx"
+          [attr.cy]="cy"
+          [attr.rx]="ring.rx"
+          [attr.ry]="ring.ry"
+          [attr.transform]="'rotate(' + phiDeg + ' ' + cx + ' ' + cy + ')'"
+          class="orbit-guide-ellipse"
+          [class.bright-ellipse]="hoveredRingIndex() === ring.index"
+          [style.--ring-color]="ring.color"
+        />
+      }
+
+      <!-- Particle Dust along orbits -->
+      @for (pt of particles; track $index) {
+        <circle
+          [attr.cx]="pt.cx"
+          [attr.cy]="pt.cy"
+          [attr.r]="pt.r"
+          [attr.fill]="pt.color"
+          [attr.opacity]="pt.opacity"
+          class="particle-dot"
+        />
+      }
+    </svg>
+
+    <!-- Central Glowing Sun Core (Depth-sorted at z-index: 20, higher than rings, between back & front planets) -->
+    <div
+      id="orbit-core"
+      class="central-orbit-core"
+      [style.left.px]="cx"
+      [style.top.px]="cy"
+      [style.width.px]="coreDiameter"
+      [style.height.px]="coreDiameter"
+      tabindex="0"
+      role="link"
+      aria-label="Prathyusha Sadhu, PS core"
+      (click)="onCoreClick($event)"
+      (keydown.enter)="onCoreClick($event)"
+      (mouseenter)="onCoreHover()"
+      (mouseleave)="onCoreLeave()"
+    >
+      <div class="core-halo-pulse" aria-hidden="true"></div>
+      <div class="core-sphere">
+        <svg class="core-svg" viewBox="0 0 100 100" aria-hidden="true">
+          <defs>
+            <radialGradient id="core-sun-glow" cx="38%" cy="35%" r="65%">
+              <stop offset="0%" stop-color="#E0F2FE" />
+              <stop offset="35%" stop-color="#22D3EE" />
+              <stop offset="75%" stop-color="#1D4ED8" />
+              <stop offset="100%" stop-color="#050A1A" />
+            </radialGradient>
+            <linearGradient id="core-logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#22D3EE" />
+              <stop offset="100%" stop-color="#3B82F6" />
+            </linearGradient>
+          </defs>
+          <circle cx="50" cy="50" r="48" fill="url(#core-sun-glow)" class="sun-core-circle" />
+          <circle cx="50" cy="50" r="48" fill="none" stroke="url(#core-logo-grad)" stroke-width="2.5" />
+          <ellipse cx="50" cy="39" rx="17" ry="5.8" transform="rotate(-26 50 39)" fill="none" stroke="#E0F2FE" stroke-width="2" opacity="0.9" />
+          <circle cx="50" cy="39" r="9.5" fill="none" stroke="#E0F2FE" stroke-width="1.8" />
+          <text x="50" y="64" text-anchor="middle" class="core-brand-text">P. / ORBIT</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Two-Layer HTML Planets: Outer .planet receives translate3d ONLY, Inner .planet-body scales on hover -->
+    <div class="planets-layer" aria-hidden="false">
+      @for (planet of planets; track planet.id) {
+        <div
+          class="planet"
+          [id]="'planet-' + planet.id"
+          [style.transform]="'translate3d(' + planet.x + 'px, ' + planet.y + 'px, 0)'"
+          [style.z-index]="planet.zIndex || 20"
+        >
+          <a
+            class="planet-link"
+            [href]="'#' + planet.cardId"
+            [attr.aria-label]="planet.name"
+            (click)="scrollToTarget(planet.cardId, $event)"
+            (mouseenter)="onPlanetHover(planet)"
+            (mouseleave)="onPlanetLeave(planet)"
+            (focus)="onPlanetHover(planet)"
+            (blur)="onPlanetLeave(planet)"
+            [style.--p-accent]="planet.accent"
+          >
+            <!-- Inner Layer: Receives hover/focus scale(1.15) with transition -->
+            <div class="planet-body">
+              <div
+                class="planet-ring"
+                [class.dashed-ring]="planet.kind === 'ind'"
+                [class.solid-ring]="planet.kind === 'pro'"
+              >
+                <div class="planet-sphere">
+                  <span class="planet-icon" aria-hidden="true">
+                    @switch (planet.icon) {
+                      @case ('code') {
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+                        </svg>
+                      }
+                      @case ('gauge') {
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/>
+                        </svg>
+                      }
+                      @case ('shield-check') {
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/>
+                        </svg>
+                      }
+                      @case ('image') {
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+                        </svg>
+                      }
+                      @case ('heart-pulse') {
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/>
+                        </svg>
+                      }
+                      @case ('message-square') {
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                      }
+                      @case ('cpu') {
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/>
+                        </svg>
+                      }
+                      @case ('mic') {
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/>
+                        </svg>
+                      }
+                      @case ('bar-chart') {
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                          <line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/>
+                        </svg>
+                      }
+                      @case ('graduation-cap') {
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                        </svg>
+                      }
+                    }
+                  </span>
+                  <span class="specular-glint" aria-hidden="true"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Permanent label under planet: short name ONLY -->
+            <div
+              class="planet-label"
+              [id]="'label-' + planet.id"
+              [class.label-hidden]="planet.labelHidden && !planet.isHovered"
+            >
+              <span class="label-name">{{ planet.orbitLabel }}</span>
+            </div>
+
+            <!-- Hover tooltip: tag/type ONLY here -->
+            @if (planet.isHovered) {
+              <div class="planet-tooltip" role="tooltip">
+                <span class="tooltip-name">{{ planet.name }}</span>
+                <span class="tooltip-tag">{{ planet.kind === 'ind' ? 'Independent' : 'Professional' }}</span>
+              </div>
+            }
+          </a>
+        </div>
+      }
+    </div>
+  </div>
+</div>

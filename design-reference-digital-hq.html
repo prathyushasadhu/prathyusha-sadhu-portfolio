@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prathyusha Sadhu | Digital HQ</title>
+<meta name="description" content="Senior Frontend Engineer with 9+ years of enterprise Angular experience, and AI product builder.">
+<meta property="og:title" content="Prathyusha Sadhu | Digital HQ"><meta property="og:description" content="Engineering the next possibility.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#090D18;--sf:#111A2A;--el:#202E45;--blue:#3985E8;--eng:#73B6FF;--ai:#8B72E8;--prod:#36C9A0;--cre:#F1A75A;--tx:#E8EEF9;--mu:#9AA8C1;--bd:rgba(115,182,255,.14);--r:18px;color-scheme:dark;box-sizing:border-box;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.65 Inter,system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:"Space Grotesk",sans-serif;margin:0;line-height:1.1;letter-spacing:-.02em}
+.mono{font:500 .75rem "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--eng)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+:focus-visible{outline:2px solid var(--eng);outline-offset:3px;border-radius:8px}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:var(--el);padding:8px 14px;border-radius:8px;z-index:99}
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.bg i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.3;animation:drift 30s ease-in-out infinite alternate}
+.bg .a{width:520px;height:420px;background:var(--blue);right:-120px;top:-80px}
+.bg .b{width:480px;height:420px;background:var(--ai);left:-160px;top:45%;animation-delay:-10s}
+.bg .c{width:420px;height:360px;background:var(--prod);right:5%;bottom:-120px;opacity:.2;animation-delay:-20s}
+.bg .g{inset:0;border-radius:0;filter:none;opacity:1;animation:none;background:linear-gradient(rgba(115,182,255,.04) 1px,transparent 1px) 0 0/56px 56px,linear-gradient(90deg,rgba(115,182,255,.04) 1px,transparent 1px) 0 0/56px 56px;-webkit-mask:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 75%);mask:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 75%)}
+@keyframes drift{to{transform:translate(60px,40px) scale(1.12)}}
+nav{position:sticky;top:0;z-index:20;background:#090D18d9;backdrop-filter:blur(10px);border-bottom:1px solid var(--bd)}
+nav .wrap{display:flex;align-items:center;gap:10px;height:62px}
+.logo{font:700 1.05rem "Space Grotesk";margin-right:auto}.logo b{color:var(--eng)}
+.links{display:flex;gap:2px}.links a{padding:6px 10px;border-radius:10px;color:var(--mu);font-size:.88rem;position:relative}
+.links a:hover,.links a.on{color:var(--tx)}.links a.on::after{content:"";position:absolute;left:10px;right:10px;bottom:0;height:2px;background:var(--c,var(--eng));border-radius:2px}
+.kbd,.burger{font:500 .75rem "JetBrains Mono";color:var(--mu);background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:7px 12px;cursor:pointer}
+.kbd:hover,.burger:hover{color:var(--tx);border-color:var(--eng)}.burger{display:none;font-size:1rem;line-height:1}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center;padding:56px 0 30px}
+.who{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.ph{width:88px;height:88px;border-radius:50%;padding:3px;background:conic-gradient(var(--eng),var(--ai),var(--prod),var(--cre),var(--eng));box-shadow:0 0 34px #73B6FF30;animation:spin 14s linear infinite;flex:none}
+.ph img{width:100%;height:100%;border-radius:50%;display:block;border:3px solid var(--bg);animation:spin 14s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+h1{font-size:clamp(2.5rem,6.4vw,4.6rem)}
+h1 span{background:linear-gradient(90deg,var(--eng),var(--ai) 60%,var(--prod));-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag1{font:500 clamp(1.15rem,2.4vw,1.6rem) "Space Grotesk";margin:14px 0 6px}
+.lead{color:var(--mu);max-width:34em;margin:8px 0}
+.role{font:500 .85rem "JetBrains Mono";margin:12px 0 24px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:14px;font:500 .95rem Inter;border:1px solid var(--bd);background:var(--sf);color:var(--tx);cursor:pointer;box-shadow:0 1px 0 #ffffff0d inset,0 8px 20px #0006;transition:transform .2s,box-shadow .2s,border-color .2s}
+.btn:hover{transform:translateY(-3px);border-color:var(--eng);box-shadow:0 14px 28px #0008,0 0 24px #73B6FF30}
+.btn.p{background:linear-gradient(135deg,var(--blue),#2c63c4);border-color:#73B6FF66}
+.hub svg{width:100%;height:auto;display:block;overflow:visible}
+.orbit{transform-origin:230px 230px;animation:rot 40s linear infinite}@keyframes rot{to{transform:rotate(360deg)}}
+.hub:hover .orbit,.hub:focus-within .orbit{animation-play-state:paused}
+.pl{cursor:pointer}.pl .d{transition:filter .2s}.pl:hover .d,.pl:focus-visible .d{filter:drop-shadow(0 0 9px #ffffffaa)}
+#hq{cursor:pointer}#hq:hover polygon{filter:drop-shadow(0 0 12px #73B6FF)}
+.tip{min-height:52px;margin-top:2px;text-align:center;color:var(--mu);font-size:.9rem}.tip b{display:block;color:var(--tx);font:700 1rem "Space Grotesk"}
+.leg{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:8px}
+.lg{font:400 .72rem "JetBrains Mono";padding:6px 11px;min-height:34px;border-radius:20px;border:1px solid var(--bd);color:var(--mu);display:inline-flex;align-items:center;gap:7px}
+.lg::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--a)}.lg:hover{color:var(--tx);border-color:var(--a)}
+.strip{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--bd);border-radius:22px;background:linear-gradient(160deg,#16213a99,#111A2Acc);overflow:hidden;box-shadow:0 20px 50px #0006}
+.strip div{padding:22px 20px;border-right:1px solid var(--bd)}.strip div:last-child{border:0}
+.strip b{display:block;font:700 1.9rem "Space Grotesk";color:var(--eng)}.strip span{color:var(--mu);font-size:.82rem;line-height:1.35;display:block}
+section{padding:56px 0}
+.head{margin-bottom:24px}.head p{color:var(--mu);margin:8px 0 0;max-width:42em}
+h2{font-size:clamp(1.7rem,3.6vw,2.4rem)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;perspective:1000px}
+.card{background:linear-gradient(160deg,#16213a,var(--sf));border:1px solid var(--bd);border-radius:var(--r);padding:24px;position:relative;transform-style:preserve-3d;transition:transform .18s ease-out,box-shadow .25s,border-color .25s;box-shadow:0 1px 0 #ffffff0a inset,0 14px 34px #0006}
+.card::before{content:"";position:absolute;left:0;top:22px;bottom:22px;width:3px;background:var(--a);border-radius:0 4px 4px 0}
+.card.ind{border-style:dashed;background:linear-gradient(160deg,#171a30,#101626)}
+.card:hover{border-color:color-mix(in srgb,var(--a) 55%,transparent);box-shadow:0 22px 44px #000a,0 0 34px color-mix(in srgb,var(--a) 20%,transparent)}
+.kind{display:inline-block;font:500 .68rem "JetBrains Mono";text-transform:uppercase;letter-spacing:.06em;padding:2px 10px;border-radius:20px;margin-bottom:12px;color:var(--eng);border:1px solid #73B6FF55;background:#73B6FF14}
+.ind .kind{color:var(--cre);border-color:#F1A75A55;background:#F1A75A12}
+.card h3{font-size:1.2rem;margin-bottom:8px}.card p{color:var(--mu);margin:6px 0;font-size:.94rem}
+.tag{display:inline-block;margin:6px 6px 0 0;padding:2px 10px;border:1px solid var(--bd);border-radius:20px;font:400 .72rem "JetBrains Mono";color:var(--a)}
+.met{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}.met span{font:500 .78rem "JetBrains Mono";padding:4px 10px;border-radius:10px;background:#0b1220;border:1px solid var(--bd);color:var(--tx)}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0;font:400 .72rem "JetBrains Mono";color:var(--mu)}.flow em{font-style:normal;padding:3px 8px;border:1px solid color-mix(in srgb,var(--a) 50%,transparent);border-radius:8px;color:var(--tx)}
+.ph2{border:1px dashed #F1A75A66;background:#F1A75A0d}
+.sub{margin:30px 0 14px;font:500 .8rem "JetBrains Mono";letter-spacing:.08em;text-transform:uppercase;color:var(--a)}
+.tl{display:grid;grid-template-columns:280px 1fr;gap:22px}
+.steps{position:relative;display:flex;flex-direction:column;gap:10px;border-left:2px solid var(--bd);padding-left:16px}
+.fill{position:absolute;left:-2px;top:0;width:2px;height:100%;background:linear-gradient(var(--eng),var(--ai),var(--prod));transform-origin:top}
+.step{all:unset;cursor:pointer;display:block;padding:12px 14px;border-radius:14px;border:1px solid transparent;color:var(--mu);position:relative}
+.step::before{content:"";position:absolute;left:-24px;top:20px;width:10px;height:10px;border-radius:50%;background:var(--el);border:2px solid var(--bg)}
+.step b{display:block;color:var(--tx);font-family:"Space Grotesk"}.step.on{background:var(--sf);border-color:var(--bd)}.step.on::before{background:var(--eng);box-shadow:0 0 12px var(--eng)}
+.step:focus-visible{outline:2px solid var(--eng)}
+.panel{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:24px}.panel ul{margin:10px 0;padding-left:18px;color:var(--mu)}.panel li{margin:4px 0}
+.cs{display:flex;justify-content:space-between;gap:20px;align-items:center;background:linear-gradient(120deg,#1a2a4a,#1b1840 60%,#0f2a2a);border:1px solid var(--bd);border-radius:22px;padding:34px}
+footer{padding:30px 0 100px;color:var(--mu);font-size:.85rem;border-top:1px solid var(--bd)}
+.bot{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;width:64px;height:64px;border-radius:18px;border:1px solid var(--bd);background:var(--sf);cursor:pointer;padding:6px;box-shadow:0 10px 30px #000a,0 0 22px #73B6FF2a}
+.bot svg{width:100%;height:100%;shape-rendering:crispEdges;animation:bob 1.6s steps(2) infinite}
+.bot.think svg{animation-duration:.5s}.bot:hover{border-color:var(--eng)}
+.eye{animation:blink 4s steps(1) infinite;transform-box:fill-box;transform-origin:center}
+@keyframes bob{50%{transform:translateY(-2px)}}@keyframes blink{94%{transform:scaleY(.15)}}
+.chat{position:fixed;right:18px;bottom:96px;width:min(360px,calc(100vw - 36px));background:var(--sf);border:1px solid var(--bd);border-radius:20px;box-shadow:0 24px 60px #000b;z-index:30;display:none;flex-direction:column;overflow:hidden}
+.chat.open{display:flex}.chat header{padding:12px 16px;border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center;font:700 .95rem "Space Grotesk"}
+.chat header i{font:500 .65rem "JetBrains Mono";font-style:normal;color:var(--cre);border:1px solid #F1A75A55;border-radius:20px;padding:1px 8px}
+.msgs{padding:14px;display:flex;flex-direction:column;gap:10px;max-height:260px;overflow:auto;font-size:.9rem}
+.m{padding:9px 12px;border-radius:14px;max-width:92%}.m.a{background:var(--el)}.m.u{background:var(--blue);align-self:flex-end}
+.sug{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 14px}.sug button{all:unset;cursor:pointer;font-size:.78rem;padding:5px 11px;border:1px solid var(--bd);border-radius:20px;color:var(--eng)}.sug button:hover{border-color:var(--eng)}
+.pal{position:fixed;inset:0;background:#05080fcc;z-index:50;display:none;align-items:flex-start;justify-content:center;padding-top:14vh}.pal.open{display:flex}
+.pbox{width:min(560px,92vw);background:var(--sf);border:1px solid var(--bd);border-radius:18px;box-shadow:0 30px 80px #000;overflow:hidden}
+.pbox input{width:100%;background:none;border:0;border-bottom:1px solid var(--bd);padding:16px 18px;color:var(--tx);font:1rem Inter;outline:0}
+.pbox ul{list-style:none;margin:0;padding:8px;max-height:300px;overflow:auto}.pbox li{padding:10px 12px;border-radius:10px;cursor:pointer;display:flex;justify-content:space-between;color:var(--mu)}.pbox li.sel{background:var(--el);color:var(--tx)}
+@media(max-width:1000px){.links{display:none;position:absolute;top:62px;left:0;right:0;flex-direction:column;background:#0b1220f5;padding:10px 22px 16px;border-bottom:1px solid var(--bd)}.links.open{display:flex}.links a{padding:12px 6px;font-size:1rem}.links a.on::after{left:6px;right:auto;width:28px}.burger{display:block}}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:32px}.grid{grid-template-columns:1fr}.strip{grid-template-columns:1fr 1fr}.strip div{border-bottom:1px solid var(--bd)}.tl{grid-template-columns:1fr}.cs{flex-direction:column;align-items:flex-start}}
+@media(max-width:640px){.kbd{display:none}.hub{max-width:420px;margin:0 auto}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style></head><body>
+<div class="bg" aria-hidden="true"><i class="g"></i><i class="a"></i><i class="b"></i><i class="c"></i></div>
+<a class="skip" href="#main">Skip to content</a>
+<nav aria-label="Primary"><div class="wrap"><a class="logo" href="#home">PRATHYUSHA<b>.</b>HQ</a>
+<div class="links" id="links"><a href="#home" style="--c:var(--eng)">Home</a><a href="#about">About</a><a href="#eng" style="--c:var(--eng)">Engineering</a><a href="#ai" style="--c:var(--ai)">AI</a><a href="#product" style="--c:var(--prod)">Product</a><a href="#resume">Resume</a><a href="#contact">Contact</a></div>
+<button class="kbd" id="kb" aria-label="Open command palette">⌘K / Ctrl K</button><button class="burger" id="bg" aria-label="Toggle menu" aria-expanded="false" aria-controls="links">☰</button></div></nav>
+<main id="main"><div class="wrap">
+<div class="hero" id="home"><div>
+ <div class="who in"><div class="ph"><img alt="Portrait of Prathyusha" src="data:image/webp;base64,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" width="82" height="82"></div><span class="mono">Hyderabad · Canada · India</span></div>
+ <h1 class="in">PRATHYUSHA <span>SADHU</span></h1>
+ <div class="tag1 in">Engineering the next possibility.</div>
+ <p class="lead in">I build scalable digital experiences and explore what happens when engineering meets intelligence. Senior Frontend Engineer with 9+ years of enterprise Angular experience, including 3 years leading a frontend team in Canada.</p>
+ <div class="role in">Senior Frontend Engineer | AI Product Builder | Technology Explorer</div>
+ <div class="cta in"><a class="btn p" href="#eng">Explore My Work →</a><a class="btn" href="#resume">Download Resume</a><a class="btn" href="#contact">Contact Me</a></div>
+</div>
+<div class="hub in"><svg id="orbit" viewBox="0 0 460 460" role="group" aria-label="Project orbit: projects orbiting the Digital HQ">
+ <defs><radialGradient id="g"><stop offset="0" stop-color="#3985E8" stop-opacity=".34"/><stop offset="1" stop-color="#3985E8" stop-opacity="0"/></radialGradient></defs>
+ <circle cx="230" cy="230" r="226" fill="url(#g)"/>
+ <g id="hq" tabindex="0" role="button" aria-label="Digital HQ"><circle cx="230" cy="230" r="40" fill="#111A2A" stroke="#73B6FF55"/><polygon points="230,205 258,250 202,250" fill="#0e1424" stroke="#73B6FF" stroke-width="1.5"/><text x="230" y="244" text-anchor="middle" fill="#E8EEF9" font-family="Space Grotesk" font-weight="700" font-size="11">HQ</text></g>
+</svg><div class="tip" id="tip" aria-live="polite">Hover a planet and click to open the project. Filled = professional, hollow = independent.</div>
+<div class="leg" id="leg"></div></div></div>
+
+<div class="strip rv" aria-label="Experience highlights">
+ <div><b>9+</b><span>years of enterprise frontend engineering</span></div>
+ <div><b>v8–19</b><span>Angular, with TypeScript, RxJS and NgRx</span></div>
+ <div><b>3 yrs</b><span>leading a frontend team in Canada</span></div>
+ <div><b>2</b><span>countries, working directly with North American clients</span></div>
+ <div><b>90+</b><span>Lighthouse score on enterprise apps</span></div>
+</div>
+
+<section id="about" class="rv"><div class="head"><div class="mono">About</div><h2>Enterprise craft, with an AI curiosity</h2><p>I turn ambiguous requirements into clean, scalable frontends. At Infosys I built Angular applications for a US telecom client; at Mindtree I led frontend modernization across four client engagements. Today I also design voice agents and conversational interfaces as independent projects.</p></div></section>
+
+<section id="eng" class="rv" style="--a:var(--eng)"><div class="head"><div class="mono">Engineering Lab</div><h2>Professional case studies</h2><p>Enterprise work at Infosys for a US telecom client. Detailed write-ups are coming.</p></div><div class="grid" id="p-eng"></div></section>
+<section id="ai" class="rv" style="--a:var(--ai)"><div class="head"><div class="mono" style="color:var(--ai)">AI Lab</div><h2>Voice agents and LLM experiments</h2><p>Independent projects, not client work.</p></div><div class="grid" id="p-ai"></div></section>
+<section id="product" class="rv" style="--a:var(--prod)"><div class="head"><div class="mono" style="color:var(--prod)">Product Studio</div><h2>Products and prototypes</h2><p>Independent work, shown with its real status.</p></div><div class="grid" id="p-product"></div></section>
+<section id="resume" class="rv"><div class="head"><div class="mono">Career journey</div><h2>Nine years, two companies, two countries</h2></div>
+<div class="tl"><div class="steps" role="tablist"><i class="fill"></i></div><div class="panel" id="tp" role="tabpanel" aria-live="polite"></div></div>
+<p style="margin-top:22px"><a class="btn p" href="Prathyusha_Sadhu_Resume.pdf" download>Download Resume (PDF)</a></p></section>
+
+<section id="contact" class="rv"><div class="cs"><div><div class="mono">Let’s talk</div><h2>Open to senior and lead frontend roles and freelance projects.</h2><p style="color:var(--mu);margin:10px 0 0">prathyushasadhu12@gmail.com · linkedin.com/in/prathyusha-sadhu-39144b79</p></div><a class="btn p" href="mailto:prathyushasadhu12@gmail.com">Email me →</a></div></section>
+</div></main>
+<footer><div class="wrap">© Prathyusha Sadhu · Hyderabad, India · Preview build</div></footer>
+
+<button class="bot" id="bot" aria-label="Open portfolio assistant, a pixel mini-me"></button>
+<div class="chat" id="chat" role="dialog" aria-label="Portfolio assistant"><header>Mini-me assistant <i>Demo mode</i></header><div class="msgs" id="msgs"><div class="m a">Hi, I’m the pixel mini-me! Ask about Prathyusha’s experience. I answer only from her portfolio.</div></div><div class="sug" id="sug"></div></div>
+<div class="pal" id="pal"><div class="pbox" role="dialog" aria-label="Command palette"><input id="pin" placeholder="Type a command…" aria-label="Command"><ul id="pl"></ul></div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+$("#hq").onclick=()=>{$("#tip").innerHTML="<b>Digital HQ</b>Senior Frontend Engineer · 9+ years. Pick a project, or press Ctrl/Cmd+K.";openP()};
+const P=[
+["p-eng","pro","#73B6FF","Infosys · US telecom client","Angular architecture and reusable UI","Enterprise Angular applications with TypeScript, RxJS and NgRx state management for complex business workflows. Designed 30+ reusable components and turned Figma designs into responsive layouts.",["Angular","NgRx","RxJS","Figma"],["30+ components","90% coverage gate"]],
+["p-eng","pro","#73B6FF","Infosys · US telecom client","Core Web Vitals and performance","Lazy loading, code-splitting and module optimization on a telecom front end.",["Angular","Lighthouse"],["Lighthouse 90+","LCP ~4s → under 2.2s","Bundle −30%"]],
+["p-eng","pro","#73B6FF","Infosys · US telecom client","Payment integration debugging","Investigated and resolved Google Pay and Apple Pay token integration issues across environments using Splunk, browser debugging and API/network analysis.",["Splunk","REST","DevTools"],[]],
+["p-eng","pro","#73B6FF","Infosys · US telecom client","AEM image optimization","Dynamic image resizing for AEM DAM hero images using Dynamic Media, with configurable width and quality, reducing image payload and improving Core Web Vitals.",["AEM","Dynamic Media"],[]],
+["p-ai","ind","#8B72E8","Independent project","q-live: voice AI for clinic booking","A multi-tenant voice agent for phone appointment booking, with Telugu speech support. Each clinic gets its own number, greeting, prompts and data.",["LiveKit","Sarvam AI","Groq","Supabase"],[],["SIP","LiveKit","Sarvam STT/TTS","Groq LLM","Supabase"]],
+["p-ai","ind","#8B72E8","Independent project","Multi-model AI chat platform","A support chatbot that switches dynamically between Claude, GPT-4 and domain models, with role-based system prompts and sentiment analysis.",["Claude","GPT-4","Prompt engineering"],["10,000+ chats/mo","85% FCR","(self-reported)"]],
+["p-ai","ind","#8B72E8","Independent project","AI performance optimization engine","A tool that finds frontend bottlenecks and recommends code-splitting and lazy-loading, using an ML-based bundle analyzer.",["ML","Bundle analysis"],["42% avg. CWV gain","(self-reported)"]],
+["p-product","ind","#36C9A0","In development","Jarvis: AI personal assistant","Voice-controlled task, calendar and email automation with context-aware conversation, memory and agentic workflows.",["Angular","Web Speech API","Claude API"],[]],
+["p-product","ind","#36C9A0","Deployed · independent","Stock Analyzer","A Python/Streamlit scanner for Indian equities (~750 Nifty stocks, ~7,800 NSE+BSE) with candlestick patterns, EMA/RSI overlays and rule-based scores.",["Python","Streamlit","Render"],[],0,"https://github.com/prathyushasadhu/stock-analyzer"]];
+P.forEach((p,i)=>{$("#"+p[0]).insertAdjacentHTML("beforeend",`<article id="pj${i}" class="card ${p[1]=="ind"?"ind":""}" style="--a:${p[2]}"><span class="kind">${p[1]=="pro"?"Professional":"Independent"} · ${p[3]}</span><h3>${p[4]}</h3><p>${p[5]}</p>${p[8]&&p[8].length?`<div class="flow">${p[8].map(x=>`<em>${x}</em>`).join("→")}</div>`:""}${p[7].length?`<div class="met">${p[7].map(m=>`<span>${m}</span>`).join("")}</div>`:""}${p[6].map(t=>`<span class="tag">${t}</span>`).join("")}${p[9]?`<p><a href="${p[9]}" target="_blank" rel="noopener" style="color:var(--prod)">GitHub ↗</a></p>`:""}</article>`)});
+
+const RINGS=[["p-product","Product",84,34,"#36C9A0"],["p-ai","AI",140,52,"#8B72E8"],["p-eng","Engineering",196,72,"#73B6FF"]];let planets="",leg="";
+RINGS.forEach((rg,ri)=>{const items=P.map((p,i)=>[p,i]).filter(x=>x[0][0]===rg[0]);let g="";
+ items.forEach(([p,i],k)=>{const a=k/items.length*Math.PI*2+ri*.9,x=(230+rg[2]*Math.cos(a)).toFixed(1),y=(230+rg[2]*Math.sin(a)).toFixed(1),col=p[2],ind=p[1]=="ind";
+  g+=`<a class="pl" href="#pj${i}" data-t="${p[4]}|${rg[1]} · ${ind?"Independent":"Professional"}" aria-label="${p[4]}"><circle cx="${x}" cy="${y}" r="17" fill="transparent"/><circle class="d" cx="${x}" cy="${y}" r="${ind?6:8}" fill="${ind?"#0e1424":col}" stroke="${col}" stroke-width="2"/></a>`;
+  leg+=`<a class="lg" href="#pj${i}" style="--a:${col}">${p[4].split(":")[0]}</a>`});
+ planets+=`<circle cx="230" cy="230" r="${rg[2]}" fill="none" stroke="${rg[4]}" stroke-opacity=".25" stroke-dasharray="3 7"/><text x="230" y="${230-rg[2]-5}" text-anchor="middle" fill="#9AA8C1" font-family="JetBrains Mono" font-size="9" letter-spacing="1.5">${rg[1].toUpperCase()}</text><g class="orbit" style="animation-duration:${rg[3]}s;animation-direction:${ri==1?"reverse":"normal"}">${g}</g>`});
+$("#orbit").insertAdjacentHTML("beforeend",planets);$("#leg").innerHTML=leg;
+$$(".pl").forEach(n=>{const f=()=>{const[a,b]=n.dataset.t.split("|");$("#tip").innerHTML=`<b>${a}</b>${b}`};n.addEventListener("mouseenter",f);n.addEventListener("focus",f)});
+const TL=[{h:"Technology Analyst · Infosys Limited",n:"Infosys Limited",s:"Technology Analyst · 2021–2026",m:"Sep 2021 – Mar 2026 · Client: a US telecom client · India, then Canada",l:["Built enterprise Angular apps with TypeScript, RxJS and NgRx","Designed 30+ reusable UI components","Lighthouse 90+, LCP ~4s → under 2.2s, bundle −30%","Maintained a 90% SonarQube gate; CI/CD with GitHub Actions and Azure DevOps"],t:["Angular","NgRx","AEM","Jest","SonarQube"]},
+{h:"Senior Software Engineer · Mindtree Limited",n:"Mindtree Limited",s:"Senior Software Engineer · 2016–2021",m:"Jul 2016 – Sep 2021 · Four client engagements",l:["Led frontend modernization with modular Angular components","Built component libraries adopted across business modules","Organic traffic +18%, page speed score 55 → 88","Worked directly with clients in Agile/Scrum teams"],t:["Angular","Bootstrap","jQuery","SEO"]},
+{h:"B.Tech Computer Science and Engineering",n:"Education",s:"KL Education Foundation · 2012–2016",m:"Guntur · Grade 8.9/10",l:["Certifications: Generative AI (Outskill), Understanding Agentic AI (Agent Academy)"],t:[]}];
+function showTL(i){const x=TL[i];$("#tp").innerHTML=`<h3>${x.h}</h3><div class="mono" style="margin:6px 0 10px">${x.m}</div><ul>${x.l.map(a=>`<li>${a}</li>`).join("")}</ul>${x.t.map(a=>`<span class="tag" style="--a:var(--eng)">${a}</span>`).join("")}`;$$(".step").forEach((b,j)=>{b.classList.toggle("on",j==i);b.setAttribute("aria-selected",j==i)})}
+$(".steps").insertAdjacentHTML("beforeend",TL.map((x,i)=>`<button class="step" role="tab" data-k="${i}"><b>${x.n}</b>${x.s}</button>`).join(""));
+$$(".step").forEach(b=>b.onclick=()=>showTL(+b.dataset.k));showTL(0);
+// pixel mini-me
+const G=["...hhhhhh...","..hhhhhhhh..",".hhssssssshh",".hhsssbssshh",".hhsessseshh",".hhssssssshh",".hhsssmmsshh","..hsssssssh.","....ssss....","..rrrrrrrr..",".rrrrrrrrrr.","rrrrrrrrrrrr"],C={h:"#1a1226",s:"#c98f6b",b:"#d6303c",e:"#0b0b12",m:"#7a2e2e",r:"#b4303c"};
+let px="";G.forEach((r,y)=>[...r].forEach((c,x)=>{if(c!=".")px+=`<rect x="${x}" y="${y}" width="1" height="1" fill="${C[c]}"${c=="e"?' class="eye"':""}/>`}));
+const bot=$("#bot");bot.innerHTML=`<svg viewBox="0 0 12 12" aria-hidden="true">${px}</svg>`;
+const QA=[["Angular experience","Prathyusha has 9+ years of Angular experience (v8–19) with TypeScript, RxJS and NgRx, building enterprise apps for a US telecom client at Infosys and leading modernization at Mindtree."],["Performance work","At Infosys she reached Lighthouse 90+, cut LCP from ~4s to under 2.2s and reduced bundle size by 30%. At Mindtree, organic traffic rose 18%."],["AI projects","q-live (multi-tenant voice agent), Jarvis (in development), a multi-model chat platform and a performance-optimization engine. All are independent projects."],["Why a Senior role?","9+ years of enterprise Angular, 3 years leading a frontend team in Canada, measurable performance results and hands-on AI projects."]];
+const chat=$("#chat"),msgs=$("#msgs");$("#sug").innerHTML=QA.map((q,i)=>`<button data-i="${i}">${q[0]}</button>`).join("");
+bot.onclick=()=>chat.classList.toggle("open");
+$("#sug").onclick=e=>{const b=e.target.closest("button");if(!b)return;const q=QA[b.dataset.i];msgs.insertAdjacentHTML("beforeend",`<div class="m u">${q[0]}</div>`);bot.classList.add("think");setTimeout(()=>{bot.classList.remove("think");msgs.insertAdjacentHTML("beforeend",`<div class="m a">${q[1]}</div>`);msgs.scrollTop=msgs.scrollHeight},700)};
+// nav
+const L=$("#links"),B=$("#bg");B.onclick=()=>{const o=L.classList.toggle("open");B.setAttribute("aria-expanded",o)};L.onclick=e=>{if(e.target.closest("a"))L.classList.remove("open")};
+const ids=["home","about","eng","ai","product","resume","contact"],io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)$$(".links a").forEach(a=>{const on=a.getAttribute("href")==="#"+e.target.id;a.classList.toggle("on",on);on?a.setAttribute("aria-current","true"):a.removeAttribute("aria-current")})}),{rootMargin:"-40% 0px -55% 0px"});ids.forEach(i=>io.observe(document.getElementById(i)));
+// palette
+const CMD=[["Home","#home"],["About","#about"],["Engineering Lab","#eng"],["AI Lab","#ai"],["Product Studio","#product"],["Resume","#resume"],["Contact","#contact"],["Search projects","#eng"]];
+let sel=0,list=CMD;const pal=$("#pal"),pin=$("#pin"),pl=$("#pl");
+function draw(){pl.innerHTML=list.map((c,i)=>`<li class="${i==sel?"sel":""}" data-h="${c[1]}"><span>${c[0]}</span><span class="mono">go</span></li>`).join("")}
+function openP(){pal.classList.add("open");pin.value="";list=CMD;sel=0;draw();pin.focus()}function closeP(){pal.classList.remove("open")}function go(h){closeP();location.hash=h}
+$("#kb").onclick=openP;
+addEventListener("keydown",e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();pal.classList.contains("open")?closeP():openP()}else if(e.key==="Escape")closeP()});
+pin.oninput=()=>{list=CMD.filter(c=>c[0].toLowerCase().includes(pin.value.toLowerCase()));sel=0;draw()};
+pin.onkeydown=e=>{if(e.key==="ArrowDown"){sel=Math.min(sel+1,list.length-1);draw();e.preventDefault()}else if(e.key==="ArrowUp"){sel=Math.max(sel-1,0);draw();e.preventDefault()}else if(e.key==="Enter"&&list[sel])go(list[sel][1])};
+pl.onclick=e=>{const l=e.target.closest("li");if(l)go(l.dataset.h)};pal.onclick=e=>{if(e.target===pal)closeP()};
+// card tilt + GSAP
+const calm=matchMedia("(prefers-reduced-motion:reduce)").matches;
+if(!calm&&matchMedia("(hover:hover)").matches)$$(".card").forEach(c=>{c.addEventListener("pointermove",e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`rotateY(${x*8}deg) rotateX(${-y*8}deg) translateZ(6px)`});c.addEventListener("pointerleave",()=>c.style.transform="")});
+if(window.gsap&&window.ScrollTrigger&&!calm){gsap.registerPlugin(ScrollTrigger);
+ gsap.from(".in",{y:22,opacity:0,duration:.8,stagger:.09,ease:"power3.out"});
+
+ gsap.set(".rv",{opacity:0,y:28});
+ ScrollTrigger.batch(".rv",{start:"top 90%",once:true,onEnter:b=>gsap.to(b,{opacity:1,y:0,duration:.8,stagger:.1,ease:"power2.out"})});
+ $$(".grid .card").forEach(c=>gsap.from(c,{scrollTrigger:{trigger:c,start:"top 92%",once:true},y:30,opacity:0,duration:.7,ease:"power2.out"}));
+ gsap.fromTo(".fill",{scaleY:0},{scaleY:1,ease:"none",scrollTrigger:{trigger:".steps",start:"top 75%",end:"bottom 60%",scrub:true}});
+ gsap.to(".bg .a",{y:120,scrollTrigger:{scrub:true,start:0,end:"max"}});}
+</script></body></html>

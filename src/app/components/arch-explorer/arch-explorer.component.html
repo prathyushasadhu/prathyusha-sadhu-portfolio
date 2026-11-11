@@ -1,0 +1,54 @@
+<div class="arch-explorer" role="region" aria-label="Interactive architecture explorer">
+  <div class="nodes-pipeline">
+    @for (node of nodes; track node.id; let i = $index; let isLast = $last) {
+      <button
+        type="button"
+        class="arch-node-btn"
+        [class.selected]="selectedNodeId() === node.id"
+        (click)="selectNode(node.id)"
+        [attr.aria-pressed]="selectedNodeId() === node.id"
+      >
+        <span class="step-num">{{ i + 1 }}</span>
+        <span class="node-label">{{ node.label }}</span>
+        <span class="node-tech">{{ node.tech }}</span>
+      </button>
+
+      @if (!isLast) {
+        <span class="pipeline-connector" aria-hidden="true">→</span>
+      }
+    }
+  </div>
+
+  @if (selectedNode) {
+    <div class="node-detail-panel" aria-live="polite">
+      <div class="panel-header">
+        <div class="panel-title-group">
+          <h3>{{ selectedNode.label }}</h3>
+          <span class="tech-pill">{{ selectedNode.tech }}</span>
+        </div>
+        <div class="flow-pill">
+          Flow: <b>{{ selectedNode.flow }}</b>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <div class="detail-row">
+          <span class="row-label">Responsibility</span>
+          <p class="row-value">{{ selectedNode.responsibility }}</p>
+        </div>
+
+        <div class="detail-row">
+          <span class="row-label">Architectural Decision</span>
+          @if (isTodo(selectedNode.decision)) {
+            <div class="placeholder-banner">
+              Placeholder: to be added ({{ cleanTodoText(selectedNode.decision) }})
+            </div>
+          } @else {
+            <p class="row-value">{{ selectedNode.decision }}</p>
+          }
+        </div>
+      </div>
+    </div>
+  }
+</div>
+

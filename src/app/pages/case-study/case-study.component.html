@@ -1,0 +1,154 @@
+<article class="case-study-page wrap" *ngIf="study(); else notFound">
+  <!-- Back navigation & breadcrumb -->
+  <nav class="cs-nav" aria-label="Breadcrumbs">
+    <a routerLink="/" class="back-link">← Return to Home</a>
+  </nav>
+
+  <!-- 1. Header & Context -->
+  <header class="cs-header" [style.--accent]="study()?.lab === 'engineering' ? 'var(--eng)' : 'var(--ai)'">
+    <div class="kind-pill">
+      {{ study()?.kind }} Project · {{ study()?.lab === 'engineering' ? 'Engineering Lab' : 'AI Lab' }}
+    </div>
+    <h1>{{ study()?.title }}</h1>
+    <div class="context-box">
+      <span class="mono-label">1. Context & Background</span>
+      <p class="context-text">{{ study()?.context }}</p>
+    </div>
+  </header>
+
+  <!-- 2. Problem -->
+  <section class="cs-section">
+    <div class="section-badge">2. Core Problem</div>
+    <h2>The Challenge</h2>
+    <p class="section-body">{{ study()?.problem }}</p>
+  </section>
+
+  <!-- 3. Existing Architecture / Baseline -->
+  <section class="cs-section">
+    <div class="section-badge">3. Existing Baseline</div>
+    <h2>Initial State & Architecture</h2>
+    @if (isTodo(study()!.existing)) {
+      <div class="placeholder-banner">
+        Placeholder: to be added ({{ cleanTodoText(study()!.existing) }})
+      </div>
+    } @else {
+      <p class="section-body">{{ study()?.existing }}</p>
+    }
+  </section>
+
+  <!-- 4. Challenges -->
+  <section class="cs-section">
+    <div class="section-badge">4. Technical Challenges</div>
+    <h2>Obstacles & Constraints</h2>
+    <ul class="bullet-list">
+      @for (ch of study()?.challenges; track ch) {
+        <li>
+          @if (isTodo(ch)) {
+            <span class="placeholder-banner">
+              Placeholder: to be added ({{ cleanTodoText(ch) }})
+            </span>
+          } @else {
+            <span>{{ ch }}</span>
+          }
+        </li>
+      }
+    </ul>
+  </section>
+
+  <!-- 5. Contribution & Solution -->
+  <section class="cs-section">
+    <div class="section-badge">5. Engineering Contribution</div>
+    <h2>Key Solutions Delivered</h2>
+    <ul class="contribution-list">
+      @for (item of study()?.contribution; track item) {
+        <li>{{ item }}</li>
+      }
+    </ul>
+  </section>
+
+  <!-- 6. Architecture & System Design -->
+  <section class="cs-section">
+    <div class="section-badge">6. Architecture & System Flow</div>
+    <h2>System Design & Telemetry</h2>
+    @if (study()?.architecture && study()!.architecture.length > 0) {
+      <app-arch-explorer [nodes]="study()!.architecture"></app-arch-explorer>
+    } @else {
+      <div class="placeholder-banner">
+        Placeholder: to be added (architecture diagram and component flow)
+      </div>
+    }
+  </section>
+
+  <!-- 7. Tech Stack -->
+  <section class="cs-section">
+    <div class="section-badge">7. Technical Stack</div>
+    <h2>Technologies & Tools</h2>
+    <div class="tech-tags">
+      @for (t of study()?.tech; track t) {
+        <span class="tech-tag">{{ t }}</span>
+      }
+    </div>
+  </section>
+
+  <!-- 8. Tradeoffs & Decisions -->
+  <section class="cs-section">
+    <div class="section-badge">8. Decisions & Tradeoffs</div>
+    <h2>Architectural Tradeoffs</h2>
+    @if (isTodo(study()!.tradeoffs)) {
+      <div class="placeholder-banner">
+        Placeholder: to be added ({{ cleanTodoText(study()!.tradeoffs) }})
+      </div>
+    } @else {
+      <p class="section-body">{{ study()?.tradeoffs }}</p>
+    }
+  </section>
+
+  <!-- 9. Results & Metrics -->
+  <section class="cs-section">
+    <div class="section-badge">9. Measurable Impact</div>
+    <h2>Verified Results & Outcomes</h2>
+    @if (study()?.results && study()!.results.length > 0) {
+      <div class="results-grid">
+        @for (r of study()?.results; track r.label) {
+          <div class="metric-card" [class.verified]="r.verified">
+            <span class="metric-status">
+              {{ r.verified ? 'Verified Metric' : 'Self-Reported' }}
+            </span>
+            <b class="metric-val">{{ r.value }}</b>
+            <span class="metric-lbl">{{ r.label }}</span>
+          </div>
+        }
+      </div>
+    } @else {
+      <p class="neutral-note">Project results verified through enterprise code review and telemetry.</p>
+    }
+  </section>
+
+  <!-- 10. Key Takeaways -->
+  <section class="cs-section takeaways-section">
+    <div class="section-badge">10. Retrospective</div>
+    <h2>Key Takeaways & Lessons</h2>
+    @if (isTodo(study()!.takeaways)) {
+      <div class="placeholder-banner">
+        Placeholder: to be added ({{ cleanTodoText(study()!.takeaways) }})
+      </div>
+    } @else {
+      <p class="section-body">{{ study()?.takeaways }}</p>
+    }
+  </section>
+
+  <!-- Bottom CTA -->
+  <div class="cs-bottom-bar">
+    <a routerLink="/" class="btn btn-primary">← Back to Home</a>
+    <a href="#contact" class="btn">Discuss this Project</a>
+  </div>
+</article>
+
+<ng-template #notFound>
+  <div class="wrap not-found-view">
+    <h2>Case study not found</h2>
+    <p>The requested case study could not be located.</p>
+    <a routerLink="/" class="btn btn-primary">Return to Home</a>
+  </div>
+</ng-template>
+

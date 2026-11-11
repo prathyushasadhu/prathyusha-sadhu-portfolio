@@ -1,0 +1,119 @@
+.contact-section {
+  padding: 64px 0 80px;
+}
+
+.contact-card {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 36px;
+  background: linear-gradient(135deg, #1A2A4A, #1B1840 60%, #0F2A2A);
+  border: 1px solid var(--bd);
+  border-radius: var(--radius-lg);
+  padding: 42px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  align-items: center;
+}
+
+.contact-header {
+  h2 {
+    font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+    margin: 10px 0 16px;
+    line-height: 1.15;
+  }
+
+  .contact-desc {
+    color: var(--mu);
+    font-size: 1.02rem;
+    line-height: 1.6;
+    margin-bottom: 26px;
+    max-width: 520px;
+  }
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+
+  .email-btn {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .copy-btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    background: var(--sf);
+    border: 1px solid var(--bd);
+    color: var(--tx);
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: var(--eng);
+      box-shadow: 0 0 12px rgba(115, 182, 255, 0.2);
+    }
+  }
+}
+
+.direct-links-card {
+  background: rgba(11, 18, 32, 0.75);
+  border: 1px solid var(--bd);
+  border-radius: var(--r);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.direct-links-title {
+  color: var(--eng);
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+}
+
+.direct-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .direct-item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    color: var(--tx);
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: color 0.18s ease;
+
+    .direct-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--mu);
+      min-width: 65px;
+    }
+
+    b {
+      color: var(--tx);
+      font-weight: 500;
+      word-break: break-all;
+    }
+
+    &:hover b {
+      color: var(--eng);
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .contact-card {
+    grid-template-columns: 1fr;
+    padding: 30px 24px;
+    gap: 28px;
+  }
+}

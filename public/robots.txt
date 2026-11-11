@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://prathyusha.dev/sitemap.xml
+

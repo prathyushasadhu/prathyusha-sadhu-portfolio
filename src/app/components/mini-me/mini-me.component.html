@@ -1,0 +1,122 @@
+<!-- Floating Avatar Launcher: Visible ONLY when scrolled past 60% hero height -->
+<!-- 72px circle, face crop (overflow: hidden; object-fit: cover; object-position: 50% 8%), thin cyan ring, soft pulse -->
+<button
+  type="button"
+  class="floating-avatar-launcher"
+  [class.launcher-visible]="isScrolledPastHero()"
+  (click)="toggleChat()"
+  (keydown.enter)="toggleChat()"
+  aria-label="Open Orbi assistant"
+  [attr.aria-expanded]="isOpen()"
+  title="Open Orbi assistant"
+  #avatarLauncherRef
+>
+  <div class="avatar-crop">
+    <img
+      src="/assets/hero/hero-character-480.webp"
+      alt="Orbi assistant"
+      class="avatar-face-img"
+      width="72"
+      height="72"
+      loading="lazy"
+    />
+  </div>
+  <div class="launcher-chat-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#22D3EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+      <circle cx="9" cy="12" r="1" fill="#22D3EE"/>
+      <circle cx="12" cy="12" r="1" fill="#22D3EE"/>
+      <circle cx="15" cy="12" r="1" fill="#22D3EE"/>
+    </svg>
+  </div>
+  <span class="avatar-pulse-ring" aria-hidden="true"></span>
+</button>
+
+<!-- Orbi Chat Dialog: Opens above the active launcher -->
+<div
+  class="chat-dialog"
+  [class.open]="isOpen()"
+  role="dialog"
+  aria-label="Orbi assistant dialog"
+>
+  <header class="chat-header">
+    <div class="header-left">
+      <span class="bot-status-dot" aria-hidden="true"></span>
+      <h3 class="header-title">Orbi · Prathyusha's AI Twin</h3>
+      <span class="demo-badge">Demo mode</span>
+    </div>
+    <button
+      type="button"
+      class="close-btn"
+      (click)="closeChat()"
+      aria-label="Close assistant dialog"
+      title="Close (Esc)"
+    >
+      ✕
+    </button>
+  </header>
+
+  <div class="chat-messages" #messagesScroll role="log" aria-live="polite">
+    @for (msg of messages(); track msg.id) {
+      <div
+        class="chat-bubble"
+        [class.user-bubble]="msg.sender === 'user'"
+        [class.assistant-bubble]="msg.sender === 'assistant'"
+      >
+        <p class="bubble-text">{{ msg.text }}</p>
+      </div>
+    }
+
+    @if (isThinking()) {
+      <div class="chat-bubble assistant-bubble thinking-bubble" role="status">
+        <span class="dot-flashing"></span>
+        <span class="thinking-label">Consulting portfolio facts…</span>
+      </div>
+    }
+  </div>
+
+  <!-- 3 Quick Navigation Chips -->
+  <div class="quick-nav-chips" aria-label="Explore sections">
+    <a href="#project-orbit" class="nav-chip" (click)="closeChat()">Explore Projects</a>
+    <a href="#journey" class="nav-chip" (click)="closeChat()">View Experience</a>
+    <a href="#ai-lab" class="nav-chip" (click)="closeChat()">AI Lab</a>
+  </div>
+
+  <!-- Suggested Prompt Questions -->
+  <div class="suggestions-row" aria-label="Suggested questions">
+    @for (sug of suggestions; track sug) {
+      <button
+        type="button"
+        class="sug-chip"
+        (click)="askSuggestion(sug)"
+      >
+        {{ sug }}
+      </button>
+    }
+  </div>
+
+  <!-- Custom Input Form -->
+  <form class="chat-input-bar" (submit)="onSubmit($event)">
+    <input
+      type="text"
+      class="chat-input"
+      placeholder="Ask about Angular, performance, AI…"
+      [ngModel]="inputText()"
+      (ngModelChange)="inputText.set($event)"
+      name="chatQuery"
+      aria-label="Ask assistant a question"
+      autocomplete="off"
+    />
+    <button
+      type="submit"
+      class="send-btn"
+      [disabled]="!inputText().trim()"
+      aria-label="Send question"
+    >
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="22" y1="2" x2="11" y2="13"/>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+    </button>
+  </form>
+</div>

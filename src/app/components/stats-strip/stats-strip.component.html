@@ -1,0 +1,10 @@
+<section class="strip-container" aria-label="Experience Highlights">
+  <div class="strip">
+    @for (stat of stats; track stat.label) {
+      <div class="stat-col">
+        <b class="stat-val">{{ stat.value }}</b>
+        <span class="stat-lbl">{{ stat.label }}</span>
+      </div>
+    }
+  </div>
+</section>

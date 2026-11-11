@@ -1,0 +1,99 @@
+<nav aria-label="Primary navigation">
+  <div class="wrap nav-content">
+    <a class="logo" href="#home" (click)="onLogoClick($event)" aria-label="PS - Back to top">
+      <svg class="logo-mark" viewBox="0 0 64 64" width="28" height="28" aria-hidden="true">
+        <defs>
+          <linearGradient id="nav-logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#22D3EE" />
+            <stop offset="100%" stop-color="#3B82F6" />
+          </linearGradient>
+          <radialGradient id="nav-logo-sphere" cx="35%" cy="32%" r="68%">
+            <stop offset="0%" stop-color="#A5F3FC" />
+            <stop offset="40%" stop-color="#22D3EE" />
+            <stop offset="85%" stop-color="#1E40AF" />
+          </radialGradient>
+        </defs>
+        <!-- Back ring arc -->
+        <ellipse cx="32" cy="32" rx="26" ry="8.5" transform="rotate(-26 32 32)" fill="none" stroke="url(#nav-logo-grad)" stroke-width="2.5" stroke-dasharray="40 50" stroke-dashoffset="20" opacity="0.65" />
+        <!-- Planet sphere -->
+        <circle cx="32" cy="32" r="14" fill="url(#nav-logo-sphere)" />
+        <!-- Specular glint -->
+        <ellipse cx="27" cy="26" rx="4" ry="2.2" fill="#FFFFFF" opacity="0.45" transform="rotate(-26 27 26)" />
+        <!-- Front ring swoosh with glow -->
+        <ellipse cx="32" cy="32" rx="26" ry="8.5" transform="rotate(-26 32 32)" fill="none" stroke="url(#nav-logo-grad)" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="46 50" stroke-dashoffset="-7" />
+        <circle cx="51.5" cy="22.5" r="2.2" fill="#E0F2FE" />
+      </svg>
+      <span class="logo-name logo-desktop">PS</span>
+      <span class="logo-name logo-mobile">P. / ORBIT</span>
+    </a>
+
+    <div class="links" [class.open]="menuOpen()" id="nav-links">
+      @for (item of navItems; track item.id) {
+        <a
+          [href]="item.href"
+          class="nav-link"
+          [class.active-pill]="activeSection() === item.id"
+          [attr.aria-current]="activeSection() === item.id ? 'true' : null"
+          (click)="onItemClick(item.id)"
+        >
+          <span class="nav-icon" aria-hidden="true">
+            @switch (item.icon) {
+              @case ('home') {
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              }
+              @case ('orbit') {
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-28 12 12)"/>
+                </svg>
+              }
+              @case ('journey') {
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"/>
+                </svg>
+              }
+              @case ('ai') {
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/>
+                </svg>
+              }
+              @case ('skills') {
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
+                </svg>
+              }
+              @case ('contact') {
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+              }
+            }
+          </span>
+          <span class="nav-text">{{ item.label }}</span>
+        </a>
+      }
+    </div>
+
+    <div class="actions">
+      <button
+        class="kbd-btn"
+        (click)="triggerCommandPalette()"
+        aria-label="⌘K / Ctrl K - Open command palette"
+        title="Open command palette (Ctrl+K)"
+      >
+        <span class="kbd-icon">⌘K</span>
+      </button>
+
+      <button
+        class="burger-btn"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="menuOpen()"
+        aria-controls="nav-links"
+        aria-label="Toggle navigation menu"
+      >
+        {{ menuOpen() ? '✕' : '☰' }}
+      </button>
+    </div>
+  </div>
+</nav>
